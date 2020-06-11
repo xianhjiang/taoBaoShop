@@ -20,7 +20,6 @@ export default function axios(config){
 	},err=>{
 		// console.log(err);
 		// console.log(err.response)
-		this.$router.push("/mistake")
 		return Promise.reject(err.response) //这里相当于 是让后续的执行catch里面的方法
 		// return err
 	})

@@ -80,7 +80,7 @@
                 :class="icon[n]"
                 v-if="n==2 || n==3 || n==7? true : false"
               ></span>
-              <a href="#">
+              <a href="javascript:;">
                 {{mytaobao.name}}
                 <strong class="h" v-if="n==2 ? true : false">{{items.length}}</strong>
               </a>
@@ -114,7 +114,7 @@
                         总价：
                         ￥{{$store.state.totalPrice}}
                         </span>
-                      <a target="_top" @click="buyCarClick" class="site-nav-btn">查看我的购物车</a>
+                      <a target="_top" @click.stop="buyCarClick" class="site-nav-btn">查看我的购物车</a>
                     </p>
                   </div>
                 </div>
