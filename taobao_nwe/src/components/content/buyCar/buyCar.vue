@@ -34,7 +34,7 @@
             <td colspan="6">
               <span class="fr">
                 商品总价：
-                <b>￥{{totalPrice}}</b>
+                <b>￥{{this.$store.state.totalPrice}}</b>
               </span>
             </td>
           </tr>
@@ -161,11 +161,7 @@ export default {
         setTimeout(() => {
             if(item.src===this.$store.state.order[i].src){
                 this.$store.dispatch("setshopCount",{i,n})
-                let price = 0;
-                for (let item of this.items){
-                    price += item.count * parseInt(item.price);
-                }
-                    this.totalPrice = price;
+                
         }
         }, 100)
       }
@@ -173,11 +169,6 @@ export default {
     },
     deleteClick(i) {
       this.$store.dispatch("deletegoods",i);
-      let price = 0;
-      for (let item of this.items) {
-        price += item.count * parseInt(item.price);
-      }
-      this.totalPrice = price;
     },
     back() {
       this.$router.push("/home");
@@ -204,7 +195,7 @@ export default {
         times.getSeconds() < 10 ? "0" + times.getSeconds() : times.getSeconds();
       let time = y + "-" + mm + "-" + d + " " + h + ":" + m + ":" + s;
       item.time = time;
-      item.totalPrice = this.totalPrice;
+      item.totalPrice = this.$store.state.totalPrice;
       item.state1 = "未付款";
       item.state2 = "未取消";
       item.ordernumber = "9912080711" +Math.floor(Math.random()*(100-10+1)+10)+this.totalPrice;

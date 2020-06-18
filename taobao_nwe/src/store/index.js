@@ -73,6 +73,11 @@ export default new Vuex.Store({
 		setshopCount(state,data){
 			state.order[data.i].count = data.n
 			sessionStorage.order = JSON.stringify(state.order)
+			let price = 0;
+			for (let item of state.order){
+				price += item.count * parseInt(item.price);
+			}
+			state.totalPrice = price;
 		},
 		//设置总价
 		settotalPrice(state,data){
@@ -84,6 +89,11 @@ export default new Vuex.Store({
 			let Sorder = JSON.parse(sessionStorage.order)
 			Sorder.splice(i,1)
 			sessionStorage.order = JSON.stringify(Sorder)
+			let price = 0;
+			for (let item of state.order){
+				price += item.count * parseInt(item.price);
+			}
+			state.totalPrice = price;
 		},
 		//添加订单
 		addmyorder(state,items){
