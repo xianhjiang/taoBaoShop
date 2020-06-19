@@ -570,9 +570,9 @@ export default {
     //获取每个当前收获付款等的数量
     number(i){
         if(i==0){
-            return this.shipment
+            return this.shipment>99?"99+":this.shipment.toString().substr(-2)
         }else if(i==2){
-            return this.piece
+            return this.piece>99?"99+":this.piece.toString().substr(-2)
         }else{
             return 0
         }
